@@ -31,14 +31,15 @@
 		<mapping class="com.revature.beans.Bucket"/>
 		<mapping class="com.revature.beans.Question"/>
 		<mapping class="com.revature.beans.QuestionScore"/>
-		<mapping class="com.revature.beans.QuestionTag"/>
-		<mapping class="com.revature.beans.Screener"/>
+		<mapping class="com.revature.beans.QuestionTagLookup"/>
 		<mapping class="com.revature.beans.Screening"/>
 		<mapping class="com.revature.beans.SimpleTrainee"/>
+		<mapping class="com.revature.beans.SimpleTrainer"/>
 		<mapping class="com.revature.beans.SoftSkillViolation"/>
 		<mapping class="com.revature.beans.Tag"/>
 		<mapping class="com.revature.beans.Track"/>
-		<mapping class="com.revature.beans.TrackBucket"/>
+		<mapping class="com.revature.beans.TrackBucketLookup"/>
+		<mapping class="com.revature.beans.ViolationType"/>
 		
 	</session-factory>
 </hibernate-configuration>

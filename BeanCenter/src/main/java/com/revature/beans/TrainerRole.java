@@ -1,5 +1,5 @@
 package com.revature.beans;
 
-public class TrainerRole {
+public enum TrainerRole {
 
 }

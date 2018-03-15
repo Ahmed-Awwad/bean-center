@@ -70,9 +70,9 @@ public class SimpleTrainer implements Serializable {
 	@JsonProperty
 	private String resume;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "TRAINER_CERT", joinColumns = @JoinColumn(name = "t_id"), inverseJoinColumns = @JoinColumn(name = "c_id"))
-	private List<Certification> certifications;
+	//@ManyToMany(fetch = FetchType.EAGER)
+	//@JoinTable(name = "TRAINER_CERT", joinColumns = @JoinColumn(name = "t_id"), inverseJoinColumns = @JoinColumn(name = "c_id"))
+	//private List<Certification> certifications;
 	
 	@ElementCollection(targetClass = Integer.class)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -93,7 +93,7 @@ public class SimpleTrainer implements Serializable {
 		this.email = email;
 		this.tier = tier;
 		this.resume = resume;
-		this.certifications = certifications;
+		//this.certifications = certifications;
 		this.skillId = skillId;
 	}
 
@@ -158,14 +158,6 @@ public class SimpleTrainer implements Serializable {
 		this.resume = resume;
 	}
 
-	public List<Certification> getCertifications() {
-		return certifications;
-	}
-
-	public void setCertifications(List<Certification> certifications) {
-		this.certifications = certifications;
-	}
-
 	public List<Integer> getSkillId() {
 		return skillId;
 	}
@@ -178,7 +170,7 @@ public class SimpleTrainer implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((certifications == null) ? 0 : certifications.hashCode());
+		//result = prime * result + ((certifications == null) ? 0 : certifications.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((resume == null) ? 0 : resume.hashCode());
@@ -198,11 +190,6 @@ public class SimpleTrainer implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		SimpleTrainer other = (SimpleTrainer) obj;
-		if (certifications == null) {
-			if (other.certifications != null)
-				return false;
-		} else if (!certifications.equals(other.certifications))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -241,7 +228,7 @@ public class SimpleTrainer implements Serializable {
 	@Override
 	public String toString() {
 		return "SimpleTrainer [trainerId=" + trainerId + ", name=" + name + ", title=" + title + ", email=" + email
-				+ ", tier=" + tier + ", resume=" + resume + ", certifications=" + certifications + ", skillId="
+				+ ", tier=" + tier + ", resume=" + resume + ", certifications=" + ", skillId="
 				+ skillId + "]";
 	}
 }
