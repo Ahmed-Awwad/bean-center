@@ -12,14 +12,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name="TRACK_BUCKET")
-public class TrackBucket {
+@Table(name="TRACK_BUCKET_LOOKUP")
+public class TrackBucketLookup {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="trackBucketSequence")
-	@SequenceGenerator(allocationSize=1,name="trackBucketSequence",sequenceName="TRACK_BUCKET_S1")
-	@Column(name="TRACK_BUCKET_ID")
-	private int id;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRACK_BUCKET_LOOKUP_SEQUENCE")
+	@SequenceGenerator(allocationSize=1,name="TRACK_BUCKET_LOOKUP_SEQUENCE",sequenceName="TRACK_BUCKET_LOOKUP_SEQUENCE")
+	@Column(name="TRACK_BUCKET_LOOKUP_ID")
+	private Integer trackBucketLookupId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="TRACK_ID")
@@ -30,14 +30,22 @@ public class TrackBucket {
 	private Bucket bucket;
 	
 	@Column(name="WEIGHT")
-	Double weight;
+	private Double weight;
 
-	public int getId() {
-		return id;
+	public TrackBucketLookup(int trackBucketLookupId, Track track, Bucket bucket, Double weight) {
+		super();
+		this.trackBucketLookupId = trackBucketLookupId;
+		this.track = track;
+		this.bucket = bucket;
+		this.weight = weight;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getTrackBucketLookupId() {
+		return trackBucketLookupId;
+	}
+
+	public void setTrackBucketLookupId(int trackBucketLookupId) {
+		this.trackBucketLookupId = trackBucketLookupId;
 	}
 
 	public Track getTrack() {

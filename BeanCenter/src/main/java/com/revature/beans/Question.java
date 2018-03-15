@@ -16,43 +16,56 @@ import javax.persistence.Table;
 public class Question {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="questionSequence")
-	@SequenceGenerator(allocationSize=1,name="questionSequence",sequenceName="QUESTION_S1")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="QUESTION_SEQUENCE")
+	@SequenceGenerator(name="QUESTION_SEQUENCE",sequenceName="QUESTION_SEQUENCE")
 	@Column(name="QUESTION_ID")
-	private int id;
+	private Integer questionId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BUCKET_ID")
 	private Bucket bucket;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="QUESTION_TAG_ID")
-	private QuestionTag questionTag;
+	@Column(name="IS_ACTIVE")
+	private Boolean isActive;
 	
 	@Column(name="QUESTION_TEXT")
 	private String questionText;
 	
 	@Column(name="SAMPLE_ANSWER_1")
-	private String SampleAnswer1;
+	private String sampleAnswer1;
 
 	@Column(name="SAMPLE_ANSWER_2")
-	private String SampleAnswer2;
+	private String sampleAnswer2;
 
 	@Column(name="SAMPLE_ANSWER_3")
-	private String SampleAnswer3;
+	private String sampleAnswer3;
 
 	@Column(name="SAMPLE_ANSWER_4")
-	private String SampleAnswer4;
+	private String sampleAnswer4;
 
 	@Column(name="SAMPLE_ANSWER_5")
-	private String SampleAnswer5;
+	private String sampleAnswer5;
 
-	public int getId() {
-		return id;
+	public Question(int questionId, Bucket bucket, Boolean isActive, String questionText, String sampleAnswer1,
+			String sampleAnswer2, String sampleAnswer3, String sampleAnswer4, String sampleAnswer5) {
+		super();
+		this.questionId = questionId;
+		this.bucket = bucket;
+		this.isActive = isActive;
+		this.questionText = questionText;
+		this.sampleAnswer1 = sampleAnswer1;
+		this.sampleAnswer2 = sampleAnswer2;
+		this.sampleAnswer3 = sampleAnswer3;
+		this.sampleAnswer4 = sampleAnswer4;
+		this.sampleAnswer5 = sampleAnswer5;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(int questionId) {
+		this.questionId = questionId;
 	}
 
 	public Bucket getBucket() {
@@ -63,12 +76,12 @@ public class Question {
 		this.bucket = bucket;
 	}
 
-	public QuestionTag getQuestionTag() {
-		return questionTag;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setQuestionTag(QuestionTag questionTag) {
-		this.questionTag = questionTag;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	public String getQuestionText() {
@@ -80,43 +93,43 @@ public class Question {
 	}
 
 	public String getSampleAnswer1() {
-		return SampleAnswer1;
+		return sampleAnswer1;
 	}
 
 	public void setSampleAnswer1(String sampleAnswer1) {
-		SampleAnswer1 = sampleAnswer1;
+		this.sampleAnswer1 = sampleAnswer1;
 	}
 
 	public String getSampleAnswer2() {
-		return SampleAnswer2;
+		return sampleAnswer2;
 	}
 
 	public void setSampleAnswer2(String sampleAnswer2) {
-		SampleAnswer2 = sampleAnswer2;
+		this.sampleAnswer2 = sampleAnswer2;
 	}
 
 	public String getSampleAnswer3() {
-		return SampleAnswer3;
+		return sampleAnswer3;
 	}
 
 	public void setSampleAnswer3(String sampleAnswer3) {
-		SampleAnswer3 = sampleAnswer3;
+		this.sampleAnswer3 = sampleAnswer3;
 	}
 
 	public String getSampleAnswer4() {
-		return SampleAnswer4;
+		return sampleAnswer4;
 	}
 
 	public void setSampleAnswer4(String sampleAnswer4) {
-		SampleAnswer4 = sampleAnswer4;
+		this.sampleAnswer4 = sampleAnswer4;
 	}
 
 	public String getSampleAnswer5() {
-		return SampleAnswer5;
+		return sampleAnswer5;
 	}
 
 	public void setSampleAnswer5(String sampleAnswer5) {
-		SampleAnswer5 = sampleAnswer5;
+		this.sampleAnswer5 = sampleAnswer5;
 	}
 	
 }

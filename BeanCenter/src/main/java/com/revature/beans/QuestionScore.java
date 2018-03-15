@@ -22,10 +22,10 @@ import org.hibernate.annotations.CreationTimestamp;
 public class QuestionScore {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="questionScoreSequence")
-	@SequenceGenerator(allocationSize=1,name="questionScoreSequence",sequenceName="QUESTION_SCORE_S1")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="QUESTION_SCORE_SEQUENCE")
+	@SequenceGenerator(name="QUESTION_SCORE_SEQUENCE",sequenceName="QUESTION_SCORE_SEQUENCE")
 	@Column(name="QUESTION_SCORE_ID")
-	private int id;
+	private Integer questionScoreId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="QUESTION_ID")
@@ -43,15 +43,26 @@ public class QuestionScore {
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "TIME")
-	private Date time;
+	@Column(name = "BEGIN_TIME")
+	private Date beginTime;
 
-	public int getId() {
-		return id;
+	public QuestionScore(Integer questionScoreId, Question question, Screening screening, Double score,
+			String commentary, Date beginTime) {
+		super();
+		this.questionScoreId = questionScoreId;
+		this.question = question;
+		this.screening = screening;
+		this.score = score;
+		this.commentary = commentary;
+		this.beginTime = beginTime;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Integer getQuestionScoreId() {
+		return questionScoreId;
+	}
+
+	public void setQuestionScoreId(Integer questionScoreId) {
+		this.questionScoreId = questionScoreId;
 	}
 
 	public Question getQuestion() {
@@ -86,12 +97,12 @@ public class QuestionScore {
 		this.commentary = commentary;
 	}
 
-	public Date getTime() {
-		return time;
+	public Date getBeginTime() {
+		return beginTime;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
+	public void setBeginTime(Date beginTime) {
+		this.beginTime = beginTime;
 	}
 	
 }

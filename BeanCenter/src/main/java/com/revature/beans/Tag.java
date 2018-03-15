@@ -13,20 +13,26 @@ import javax.persistence.Table;
 public class Tag {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="tagSequence")
-	@SequenceGenerator(allocationSize=1,name="tagSequence",sequenceName="TAG_S1")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TAG_SEQUENCE")
+	@SequenceGenerator(name="TAG_SEQUENCE",sequenceName="TAG_SEQUENCE")
 	@Column(name="TAG_ID")
-	private int id;
+	private Integer tagId;
 	
 	@Column(name="TAG_NAME")
-	String tagName;
+	private String tagName;
 
-	public int getId() {
-		return id;
+	public Tag(int tagId, String tagName) {
+		super();
+		this.tagId = tagId;
+		this.tagName = tagName;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getTagId() {
+		return tagId;
+	}
+
+	public void setTagId(int tagId) {
+		this.tagId = tagId;
 	}
 
 	public String getTagName() {

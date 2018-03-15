@@ -22,43 +22,75 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Screening {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="screeningSequence")
-	@SequenceGenerator(allocationSize=1,name="screeningSequence",sequenceName="SCREENING_S1")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SCREENING_SEQUENCE")
+	@SequenceGenerator(name="SCREENING_SEQUENCE",sequenceName="SCREENING_SEQUENCE")
 	@Column(name="SCREENING_ID")
-	private int id;
+	private Integer screeningId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="TRAINEE_ID")
 	private SimpleTrainee trainee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="SCREENER_ID")
-	private Screener screener;
+	@JoinColumn(name="TRAINER_ID")
+	private SimpleTrainer trainer;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="TRACK_ID")
 	private Track track;
 	
 	@Column(name="COMPOSITE_SCORE")
-	private Double CompositeScore;
+	private Double compositeScore;
+	
+	@Column(name="ABOUT_ME_COMMENTARY")
+	private String aboutMeCommentary;
 	
 	@Column(name="GENERAL_COMMENTARY")
-	private String GeneralCommentary;
+	private String generalCommentary;
+	
+	@Column(name="SOFT_SKILL_COMMENTARY")
+	private String softSkillCommentary;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DATE_TIME")
-	private Date dateTime;
+	@Column(name="START_DATE_TIME")
+	private Date startDateTime;
 	
-	@Column(name="VERDICT")
-	private String verdict;
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="END_DATE_TIME")
+	private Date endDateTime;
+	
+	@Column(name="SOFT_SKILLS_VERDICT")
+	private String softSkillsVerdict;
+	
+	@Column(name="STATUS")
+	private Status status;
 
-	public int getId() {
-		return id;
+	public Screening(Integer screeningId, SimpleTrainee trainee, SimpleTrainer trainer, Track track,
+			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
+			Date startDateTime, Date endDateTime, String softSkillsVerdict, Status status) {
+		super();
+		this.screeningId = screeningId;
+		this.trainee = trainee;
+		this.trainer = trainer;
+		this.track = track;
+		this.compositeScore = compositeScore;
+		this.aboutMeCommentary = aboutMeCommentary;
+		this.generalCommentary = generalCommentary;
+		this.softSkillCommentary = softSkillCommentary;
+		this.startDateTime = startDateTime;
+		this.endDateTime = endDateTime;
+		this.softSkillsVerdict = softSkillsVerdict;
+		this.status = status;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Integer getScreeningId() {
+		return screeningId;
+	}
+
+	public void setScreeningId(Integer screeningId) {
+		this.screeningId = screeningId;
 	}
 
 	public SimpleTrainee getTrainee() {
@@ -69,12 +101,12 @@ public class Screening {
 		this.trainee = trainee;
 	}
 
-	public Screener getScreener() {
-		return screener;
+	public SimpleTrainer getTrainer() {
+		return trainer;
 	}
 
-	public void setScreener(Screener screener) {
-		this.screener = screener;
+	public void setTrainer(SimpleTrainer trainer) {
+		this.trainer = trainer;
 	}
 
 	public Track getTrack() {
@@ -86,35 +118,67 @@ public class Screening {
 	}
 
 	public Double getCompositeScore() {
-		return CompositeScore;
+		return compositeScore;
 	}
 
 	public void setCompositeScore(Double compositeScore) {
-		CompositeScore = compositeScore;
+		this.compositeScore = compositeScore;
+	}
+
+	public String getAboutMeCommentary() {
+		return aboutMeCommentary;
+	}
+
+	public void setAboutMeCommentary(String aboutMeCommentary) {
+		this.aboutMeCommentary = aboutMeCommentary;
 	}
 
 	public String getGeneralCommentary() {
-		return GeneralCommentary;
+		return generalCommentary;
 	}
 
 	public void setGeneralCommentary(String generalCommentary) {
-		GeneralCommentary = generalCommentary;
+		this.generalCommentary = generalCommentary;
 	}
 
-	public Date getDateTime() {
-		return dateTime;
+	public String getSoftSkillCommentary() {
+		return softSkillCommentary;
 	}
 
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setSoftSkillCommentary(String softSkillCommentary) {
+		this.softSkillCommentary = softSkillCommentary;
 	}
 
-	public String getVerdict() {
-		return verdict;
+	public Date getStartDateTime() {
+		return startDateTime;
 	}
 
-	public void setVerdict(String verdict) {
-		this.verdict = verdict;
+	public void setStartDateTime(Date startDateTime) {
+		this.startDateTime = startDateTime;
+	}
+
+	public Date getEndDateTime() {
+		return endDateTime;
+	}
+
+	public void setEndDateTime(Date endDateTime) {
+		this.endDateTime = endDateTime;
+	}
+
+	public String getSoftSkillsVerdict() {
+		return softSkillsVerdict;
+	}
+
+	public void setSoftSkillsVerdict(String softSkillsVerdict) {
+		this.softSkillsVerdict = softSkillsVerdict;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 }

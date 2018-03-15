@@ -13,28 +13,46 @@ import javax.persistence.Table;
 public class Track {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="trackSequence")
-	@SequenceGenerator(allocationSize=1,name="trackSequence",sequenceName="TRACK_S1")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRACK_SEQUENCE")
+	@SequenceGenerator(name="TRACK_SEQUENCE",sequenceName="TRACK_SEQUENCE")
 	@Column(name="TRACK_ID")
-	private Integer id;
+	private Integer trackId;
 	
-	@Column(name="CURRICULUM")
-	String curriculum;
+	@Column(name="TRACK_NAME")
+	private String trackName;
+	
+	@Column(name="IS_ACTIVE")
+	private Boolean isActive;
 
-	public Integer getId() {
-		return id;
+	public Track(Integer trackId, String trackName, Boolean isActive) {
+		super();
+		this.trackId = trackId;
+		this.trackName = trackName;
+		this.isActive = isActive;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Integer getTrackId() {
+		return trackId;
 	}
 
-	public String getCurriculum() {
-		return curriculum;
+	public void setTrackId(Integer trackId) {
+		this.trackId = trackId;
 	}
 
-	public void setCurriculum(String curriculum) {
-		this.curriculum = curriculum;
+	public String getTrackName() {
+		return trackName;
+	}
+
+	public void setTrackName(String trackName) {
+		this.trackName = trackName;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 }

@@ -12,14 +12,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name="QUESTION_TAG")
-public class QuestionTag {
+@Table(name="QUESTION_TAG_LOOKUP")
+public class QuestionTagLookup {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="questionTagSequence")
-	@SequenceGenerator(allocationSize=1,name="questionTagSequence",sequenceName="QUESTION_TAG_S1")
-	@Column(name="QUESTION_TAG_ID")
-	private int id;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="QUESTION_TAG_LOOKUP_SEQUENCE")
+	@SequenceGenerator(name="QUESTION_TAG_LOOKUP_SEQUENCE",sequenceName="QUESTION_TAG_LOOKUP_SEQUENCE")
+	@Column(name="QUESTION_TAG_LOOKUP_ID")
+	private Integer questionTagLookupId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="TAG_ID")
@@ -29,12 +29,19 @@ public class QuestionTag {
 	@JoinColumn(name="QUESTION_ID")
 	private Question question;
 
-	public int getId() {
-		return id;
+	public QuestionTagLookup(int questionTagLookupId, Tag tag, Question question) {
+		super();
+		this.questionTagLookupId = questionTagLookupId;
+		this.tag = tag;
+		this.question = question;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getQuestionTagLookupId() {
+		return questionTagLookupId;
+	}
+
+	public void setQuestionTagLookupId(int questionTagLookupId) {
+		this.questionTagLookupId = questionTagLookupId;
 	}
 
 	public Tag getTag() {
