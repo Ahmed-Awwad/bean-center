@@ -29,9 +29,8 @@ public class QuestionTagLookup {
 	@JoinColumn(name="QUESTION_ID")
 	private Question question;
 
-	public QuestionTagLookup(int questionTagLookupId, Tag tag, Question question) {
+	public QuestionTagLookup(Tag tag, Question question) {
 		super();
-		this.questionTagLookupId = questionTagLookupId;
 		this.tag = tag;
 		this.question = question;
 	}
